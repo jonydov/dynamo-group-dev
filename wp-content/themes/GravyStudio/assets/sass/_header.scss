@@ -1,0 +1,258 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #fff;
+  height: 90px;
+  width: 100%;
+  @include flexbox;
+  @include justify-content(center);
+}
+
+nav {
+  position: relative;
+  z-index: 10;
+  background: #fff;
+  @include flexbox;
+  @include justify-content(space-between);
+  font-size: 1.6rem;
+
+  .logo {
+    @include flex(0 0 20%);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    @include flexbox;
+    @include align-items(center);
+
+    &#menu-main-menu {
+      @include flex(0 0 50%);
+
+      li {
+        padding: 0 8px;
+      }
+    }
+
+    &#menu-main-menu-buttons {
+      @include flex(0 0 30%);
+      @include justify-content(flex-end);
+      font-weight: 600;
+
+      li {
+        padding: 0 6px;
+
+        &.bg-grey1 a {
+          background-color: $grey2;
+
+          &:hover {
+            background-color: $grey1;
+          }
+        }
+      }
+
+      a {
+        padding: 10px 20px;
+        background-color: $grey1;
+        color: #fff;
+
+        &:hover {
+          background-color: $grey2;
+        }
+      }
+
+      &:first-of-type {
+        padding-left: 40px;
+      }
+    }
+  }
+
+  .logo {
+
+    img {
+      display: block;
+    }
+  }
+}
+
+$button-width: 61px; // The width of the button area
+$button-height: 61px; // The height of the button area
+$bar-thickness: 2px; // The thickness of the button bars
+$bar-thickness-mobile: 2px; // The thickness of the button bars
+$button-pad: 9px; // The left/right padding between button area and bars.
+$button-bar-space: 6px; // The spacing between button bars
+$button-transistion-duration: 0.3s; // The transition duration
+
+/**
+ * Toggle Switch Globals
+ *
+ * All switches should take on the class `c-hamburger` as well as their
+ * variant that will give them unique properties. This class is an overview
+ * class that acts as a reset for all versions of the icon.
+ */
+
+.c-hamburger {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  overflow: hidden;
+  z-index: 9;
+  margin: 0;
+  @include transform-translateY(-50%);
+  padding: 0;
+  width: $button-width;
+  height: $button-height;
+  font-size: 0;
+  text-indent: -9999px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  transition: background $button-transistion-duration;
+  background-color: transparent;
+  @include transition-all(.2s);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 0 99999px rgba(255, 255, 255, 0.2);
+  }
+
+  span {
+    display: block;
+    position: absolute;
+    @include centerXY;
+    height: $bar-thickness;
+    background: $grey1;
+    width: 55%;
+    margin: auto;
+  }
+}
+
+.c-hamburger span::before,
+.c-hamburger span::after {
+  position: absolute;
+  display: block;
+  left: 0;
+  width: 100%;
+  height: $bar-thickness;
+  background-color: $grey1;
+  content: "";
+}
+
+.c-hamburger span::before {
+  top: -$bar-thickness - $button-bar-space;
+}
+
+.c-hamburger span::after {
+  bottom: -$bar-thickness - $button-bar-space;
+}
+
+/**
+ * Style 2
+ *
+ * Hamburger to "x" (htx). Takes on a hamburger shape, bars slide
+ * down to center and transform into an "x".
+ */
+
+.c-hamburger--htx {
+}
+
+.c-hamburger--htx span {
+  transition: background 0s $button-transistion-duration;
+}
+
+.c-hamburger--htx span::before,
+.c-hamburger--htx span::after {
+  transition-duration: $button-transistion-duration, $button-transistion-duration;
+  transition-delay: $button-transistion-duration, 0s;
+}
+
+.c-hamburger--htx span::before {
+  transition-property: top, transform;
+}
+
+.c-hamburger--htx span::after {
+  transition-property: bottom, transform;
+}
+
+/* active state, i.e. menu open */
+
+.c-hamburger--htx.is-active {
+
+}
+
+.c-hamburger--htx.is-active span {
+  background-color: transparent;
+}
+
+.c-hamburger--htx.is-active span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.c-hamburger--htx.is-active span::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+.c-hamburger--htx.is-active span::before,
+.c-hamburger--htx.is-active span::after {
+  transition-delay: 0s, $button-transistion-duration;
+  background-color: $grey2;
+}
+
+@media (max-width: 768px) {
+
+  .c-hamburger {
+    height: 38px;
+    width: 38px;
+
+    span {
+      height: $bar-thickness-mobile;
+    }
+  }
+
+  .main-nav-buttons,
+  .main-nav {
+    display: none;
+    padding: 15px !important;
+
+    &.is-active {
+      position: fixed;
+      display: flex;
+      @include flexbox;
+      @include flex-direction(column);
+      right: 0;
+      top: 60px;
+      background: #fff;
+
+      li {
+        @include flexbox;
+        padding: 0 0px;
+        margin: 5px;
+        width: 100%;
+
+        a {
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  header {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 60px;
+  }
+}
