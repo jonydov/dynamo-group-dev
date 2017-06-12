@@ -514,10 +514,9 @@ span.wpcf7-not-valid-tip {
 header {
   position: fixed;
   top: 0;
-  width: 100%;
   z-index: 10;
   border-bottom: 1px solid #fff;
-  height: 90px;
+  height: 95px;
   width: 100%; }
   header .shell {
     height: 100%;
@@ -530,7 +529,8 @@ header {
     -ms-flex-align: center;
     -webkit-align-items: center;
     -moz-align-items: center;
-    align-items: center; }
+    align-items: center;
+    direction: ltr; }
     @media (min-width: 768px) {
       header .shell {
         display: -webkit-flex;
@@ -573,29 +573,68 @@ header {
     header .logo img {
       width: 100%;
       height: auto; }
-  @media (min-width: 768px) {
-    header .navbar {
-      display: -webkit-flex;
-      display: -webkit-box;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex; } }
-  @media (max-width: 768px) {
-    header .navbar {
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: -webkit-box;
-      display: flex; } }
+  header .navbar {
+    color: #fff;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    height: 100%; }
+    @media (min-width: 768px) {
+      header .navbar {
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex; } }
+    @media (max-width: 768px) {
+      header .navbar {
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: flex; } }
+    header .navbar ul {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center; }
+      @media (min-width: 768px) {
+        header .navbar ul {
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex; } }
+      @media (max-width: 768px) {
+        header .navbar ul {
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex; } }
+      header .navbar ul li a {
+        color: #fff;
+        font-size: 1.4rem; }
   header .phone {
+    margin-left: 10px;
+    padding: 10px 10px 10px 25px;
+    font-size: 1.4rem;
+    display: block;
     position: relative;
     width: 100%;
     border-bottom: 1px solid #fff; }
     header .phone:before {
+      font-family: "Material-Design-Iconic-Font";
       display: block;
       content: '\f2be';
       position: absolute;
-      font-size: 20px;
+      left: 10px;
+      font-size: 1.8rem;
       color: #fff; }
 
 /**
