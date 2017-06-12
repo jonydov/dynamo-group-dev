@@ -19,40 +19,28 @@
 
 <div class="wrapper">
 
-    <header>
+    <header data-spy="affix" data-offset-top="0">
         <div class="shell">
+            <a class="logo" href="<?php bloginfo('url'); ?>">
+                <img src="<?php bloginfo('template_url'); ?>/assets/images/logo-dg.png" />
+            </a>
+
             <nav class="navbar">
-
-                <a class="logo" href="<?php bloginfo('url'); ?>">
-                    <img src="<?php bloginfo('template_url'); ?>/assets/images/logo.png" />
-                </a>
-
-                <button class="c-hamburger c-hamburger--htx show-mobile">
-                    <span>toggle menu</span>
-                </button>
-
+                <span class="phone">0522-889776</span>
                 <?php
                     wp_nav_menu(array(
-                            'theme_location' => 'main-menu',
-                            'depth' => 2,
-                            'container' => false,
-                            'fallback_cb' => 'wp_page_menu',
-                            'menu_class' => 'main-nav cf',
-                            'walker' => new wp_bootstrap_navwalker())
-                    );
-                ?>
-
-
-                <?php
-                    wp_nav_menu(array(
-                            'theme_location' => 'main-menu-buttons',
-                            'depth' => 2,
-                            'container' => false,
-                            'fallback_cb' => 'wp_page_menu',
-                            'menu_class' => 'main-nav-buttons cf',
-                            'walker' => new wp_bootstrap_navwalker())
+                        'theme_location' => 'main-menu',
+                        'depth' => 2,
+                        'container' => false,
+                        'fallback_cb' => 'wp_page_menu',
+                        'menu_class' => 'main-nav cf',
+                        'walker' => new wp_bootstrap_navwalker())
                     );
                 ?>
             </nav>
+
+            <button class="c-hamburger c-hamburger--htx show-mobile">
+                <span>toggle menu</span>
+            </button>
         </div>
     </header>

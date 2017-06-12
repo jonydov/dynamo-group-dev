@@ -54,6 +54,8 @@ var humanXtensions = {
 
 $(document).ready( function () {
 
+    $('header').affix({});
+
     /* Sliders */
 
     $('.slider').slick({
