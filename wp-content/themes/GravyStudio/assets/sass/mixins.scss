@@ -10,6 +10,12 @@
   @include transition(all, $duration, linear);
 }
 
+@mixin pseudoElement() {
+  position: absolute;
+  content: '';
+  display: block;
+}
+
 @mixin flexbox {
 
   @media (min-width: 768px) {

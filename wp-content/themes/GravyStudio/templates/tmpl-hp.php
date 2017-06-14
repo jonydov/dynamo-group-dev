@@ -15,51 +15,41 @@ get_header();
                 <div class="shell">
                     <div class="holder">
 						<?php if ( get_sub_field( 'text' ) != null ) { ?>
-                            <h1><?= the_sub_field( 'text' ); ?></h1>
+                            <h1 class="animate fade-right" data-delay="100"><?= the_sub_field( 'text' ); ?></h1>
 						<?php } ?>
                     </div>
                 </div>
             </div>
         </section>
 
-	<?php } elseif ( get_row_layout() == 'subscribe_strip' ) { ?>
+	<?php } elseif ( get_row_layout() == 'highlighted_text' ) { ?>
 
-        <section class="section-subscribe-strip">
+        <section data-midnight="blue" class="section-highlighted-text" <?php if( get_sub_field( 'bg_image') != null ){ ?>style="background-image: url('<?=get_sub_field( 'bg_image'); ?> ');"<?php } ?>>
 
             <div class="shell">
-                <div class="section-body">
-                    <div class="holder cf">
-                        <span class="text animate fade-left" data-delay="100"><?= the_sub_field( 'text' ); ?></span>
-
-						<?php if ( get_sub_field( 'button_text' ) != null ) { ?>
-                            <a target="_blank" class="btn animate fade-right" data-delay="100"
-                               href="<?= the_sub_field( 'button_link' ); ?>"><?= the_sub_field( 'button_text' ); ?></a>
-						<?php } ?>
-                    </div>
+                <div class="section-body animate fade-bottom" data-delay="100">
+                    <?php the_sub_field('text'); ?>
                 </div>
             </div>
 
         </section>
 
-	<?php } elseif ( get_row_layout() == 'large_image_strip' ) { ?>
+	<?php } elseif ( get_row_layout() == 'image_section' ) { ?>
 
-        <section class="section-large-image-strip">
+        <section class="section-image" style="background-color: <?php the_sub_field('bg_color'); ?>">
 
             <div class="shell">
-				<?php if ( get_sub_field( 'title' ) != null ) { ?>
-                    <div class="section-header">
-                        <h2><?= the_sub_field( 'title' ); ?></h2>
+
+				<a href="<?php the_sub_field('link'); ?>" class="img-holder animate fade-bottom" data-delay="100">
+                    <div class="holder">
+                        <div class="img" style="background-image: url('<?=get_sub_field('image'); ?>');"></div>
+						<div class="text">
+							<h3 class="animate fade-right" data-delay="150"><?php the_sub_field('title'); ?></h3>
+							<span class="animate fade-right" data-delay="170"><?php the_sub_field('text'); ?></span>
+                        </div>
                     </div>
-				<?php } ?>
-                <div class="section-body">
-                    <div class="holder animate fade-bottom" data-delay="100">
-						<?php if ( get_sub_field( 'image' ) != null ) {
-							$img = get_sub_field( 'image' ); ?>
-                            <img src="<?= $img['url']; ?>" width="<?= $img['width']; ?>" height="<?= $img['height']; ?>"
-                                 alt="<?= $img['alt']; ?>"/>
-						<?php } ?>
-                    </div>
-                </div>
+                </a>
+
             </div>
 
         </section>

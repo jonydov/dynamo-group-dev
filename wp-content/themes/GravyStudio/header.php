@@ -26,17 +26,39 @@
             </a>
 
             <nav class="navbar">
-                <span class="phone">0522-889776</span>
-                <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'main-menu',
-                        'depth' => 2,
-                        'container' => false,
-                        'fallback_cb' => 'wp_page_menu',
-                        'menu_class' => 'main-nav cf',
-                        'walker' => new wp_bootstrap_navwalker())
-                    );
-                ?>
+                <div class="tagline">
+                    <span class="phone">0522-889776</span>
+                </div>
+                <div class="nav-holder">
+	                <?php
+	                wp_nav_menu(array(
+			                'theme_location' => 'main-menu',
+			                'depth' => 1,
+			                'container' => false,
+			                'fallback_cb' => 'wp_page_menu',
+			                'menu_class' => 'main-nav cf',
+			                'walker' => new wp_bootstrap_navwalker())
+	                );
+
+	                wp_nav_menu(array(
+			                'theme_location' => 'locations-menu',
+			                'depth' => 1,
+			                'container' => false,
+			                'fallback_cb' => 'wp_page_menu',
+			                'menu_class' => 'locations-nav cf',
+			                'walker' => new wp_bootstrap_navwalker())
+	                );
+
+	                wp_nav_menu(array(
+			                'theme_location' => 'contact-menu',
+			                'depth' => 1,
+			                'container' => false,
+			                'fallback_cb' => 'wp_page_menu',
+			                'menu_class' => 'contact-nav cf',
+			                'walker' => new wp_bootstrap_navwalker())
+	                );
+	                ?>
+                </div>
             </nav>
 
             <button class="c-hamburger c-hamburger--htx show-mobile">
