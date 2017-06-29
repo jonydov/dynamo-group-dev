@@ -26,7 +26,10 @@ body {
   overflow-x: hidden;
 
   &.rtl {
-    direction: rtl;
+
+    .wrapper {
+      direction: rtl;
+    }
   }
 }
 
@@ -106,6 +109,30 @@ section {
     color: #fff;
     padding: 0px;
 
+    .vid-holder {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      top: 0px;
+      overflow: hidden;
+      left: 0px;
+
+      &:before {
+        @include pseudoElement;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        background-color: rgba(0,0,0,.4);
+      }
+
+      iframe {
+        @include centerXY;
+        width: 140%;
+        height: 140%;
+      }
+    }
+
     .item {
       min-height: 500px;
       height: 85vh;
@@ -117,6 +144,7 @@ section {
       background-position: center;
 
       .shell {
+        z-index: 3;
         height: 100%;
         max-width: 1100px;
         @include flexbox;
@@ -126,10 +154,12 @@ section {
 
       .holder {
         @include transform-translateY(-35px);
+        max-width: 600px;
       }
 
       h1 {
         font-size: 4rem;
+        display: inline;
 
         span {
           background-color: #fff;
@@ -145,21 +175,38 @@ section {
 
   &.section-highlighted-text {
     overflow: visible;
+    z-index: initial;
 
-    &:after,
-    &:before {
-      @include pseudoElement;
-      width: 1px;
-      height: 90px;
-      z-index: 3;
-      background-color: #fff;
-      left: 10%;
-      bottom: -25px;
-    }
+    .custom-arrow {
 
-    &:after {
-      bottom: initial;
-      top: -65px;
+      &.top,
+      &.bottom {
+        @include pseudoElement;
+        width: 1px;
+        height: 90px;
+        z-index: 3;
+        background-color: rgba(255, 255, 255, .6);
+        left: 10%;
+        bottom: -25px;
+
+        i {
+          background: url('assets/images/ico-arrow.svg') no-repeat center;
+          position: absolute;
+          bottom: -30px;
+          color: #fff;
+          font-size: 34px;
+          left: 50%;
+          animation: move 1.2s infinite 0.4s alternate;
+          width: 25px;
+          height: 25px;
+          display: block;
+        }
+      }
+
+      &.top {
+        bottom: initial;
+        top: -65px;
+      }
     }
 
     .section-body {
@@ -300,7 +347,7 @@ section {
       }
     }
   }
-  
+
   &.section-logos-slider {
     padding: 80px 0;
 

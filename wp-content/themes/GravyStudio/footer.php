@@ -87,6 +87,25 @@
 
 <?php echo get_field('footer_scripts'); ?>
 
+    <?php if( is_page_template('templates/tmpl-hp.php') ){
+
+	    $text = get_field('content_sections');
+        ?>
+
+        <script type="text/javascript">
+            jQuery(document).ready( function($){
+
+                $(function(){
+                    $('.section-banner h1').typed({
+                        strings: ["<?=strip_tags($text[0]['text']); ?>"],
+                        typeSpeed: 25
+                    });
+                });
+
+            });
+        </script>
+
+    <?php } ?>
 
 <?php wp_footer(); ?>
 

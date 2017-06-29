@@ -145,6 +145,55 @@
   }
 }
 
+.typed-cursor{
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+  font-size: 50px;
+  margin-left: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  display: inline-block;
+}
+
+@-webkit-keyframes move {
+  from {
+    -webkit-transform: translateY(0);
+    -webkit-animation-timing-function: ease-in;
+  }
+  to {
+    -webkit-transform: translateY(10px);
+    -webkit-animation-timing-function: ease-out;
+  }
+}
+@keyframes move {
+  from {
+    transform: translateY(0) translateX(-50%);
+    animation-timing-function: ease-in;
+  }
+  to {
+    transform: translateY(10px) translateX(-50%);
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+
 @media screen and (max-width: 769px) {
 
   .fade-bottom {

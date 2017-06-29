@@ -4,6 +4,7 @@
 */
 
 get_header();
+
 ?>
 
 <?php if ( have_rows( 'content_sections' ) ): while ( have_rows( 'content_sections' ) ) : the_row(); ?>
@@ -12,10 +13,26 @@ get_header();
 
         <section class="section-banner">
             <div class="item" <?php if( get_sub_field( 'image') != null ){ $img = get_sub_field( 'image'); ?>style="background-image: url('<?=$img['url']; ?> ?>');"<?php } ?>>
+
+                <?php if( get_sub_field('type') == 'video' ){ ?>
+                    <div class="vid-holder">
+	                    <?php if( get_sub_field('video_youtube') != null ){ ?>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?=get_sub_field('video_youtube'); ?>/?mute=1&loop=1&autoplay=1" frameborder="0" allowfullscreen></iframe>
+	                    <?php }else{ ?>
+                            <video loop autoplay poster="<?=$img['url']; ?>">
+                                <source src="<?=get_sub_field('video_mp4'); ?>" type="video/mp4">
+                                <source src="<?=get_sub_field('video_ogv'); ?>" type="video/ogg">
+                                <source src="<?=get_sub_field('video_webm'); ?>" type="video/webm">
+                                Your browser does not support the video tag.
+                            </video>
+		                    <?=get_sub_field('video_youtube'); ?><iframe width="100%" height="100%" src="https://www.youtube.com/embed/lxf05bSC17E" frameborder="0" allowfullscreen></iframe>
+	                    <?php } ?>
+                    </div>
+                <?php } ?>
                 <div class="shell">
                     <div class="holder">
 						<?php if ( get_sub_field( 'text' ) != null ) { ?>
-                            <h1 class="animate fade-right" data-delay="100"><?= the_sub_field( 'text' ); ?></h1>
+                            <h1 class="animate fade-right" data-delay="100"></h1>
 						<?php } ?>
                     </div>
                 </div>
@@ -25,7 +42,11 @@ get_header();
 	<?php } elseif ( get_row_layout() == 'highlighted_text' ) { ?>
 
         <section class="section-highlighted-text" <?php if( get_sub_field( 'bg_image') != null ){ ?>style="background-image: url('<?=get_sub_field( 'bg_image'); ?> ');"<?php } ?>>
-
+            <span class="custom-arrow top">
+                <i></i>
+            </span>
+            <span class="custom-arrow bottom">
+            </span>
             <div class="shell">
                 <div class="section-body animate fade-bottom" data-delay="100">
                     <?php the_sub_field('text'); ?>
@@ -37,25 +58,25 @@ get_header();
 	<?php } elseif ( get_row_layout() == 'numbers_section' ) { ?>
 
         <section class="section-numbers" <?php if( get_sub_field( 'bg_image') != null ){ ?>style="background-image: url('<?=get_sub_field( 'bg_image'); ?> ');"<?php } ?>>
-
             <div class="shell">
 
                 <div class="section-header">
                     <h2><?=get_sub_field('title'); ?></h2>
                 </div>
 
-	            <?php if ( have_rows( 'items' ) ): ?>
+	            <?php if ( have_rows( 'items' ) ):  $i = 1; ?>
                     <div class="section-body">
                         <?php while ( have_rows( 'items' ) ) : the_row(); ?>
                             <div class="item animate fade-bottom" data-delay="50">
                                 <div class="holder">
-	                                <?php the_sub_field('text'); ?>
+	                                <span class="number" data-count="<?php the_sub_field('text'); ?>"></span>
                                     <h4><?php the_sub_field('title'); ?></h4>
                                 </div>
                             </div>
-                        <?php endwhile; ?>
+                        <?php $i++; endwhile; ?>
                     </div>
 	            <?php endif; ?>
+
             </div>
 
         </section>

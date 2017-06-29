@@ -22,7 +22,7 @@
     <header data-offset-top="0" data-spy="scroll" data-target=".white-section">
         <div class="shell">
             <a class="logo" href="<?php bloginfo('url'); ?>">
-                <img src="<?php bloginfo('template_url'); ?>/assets/images/logo-dg.png" />
+                <img src="<?php bloginfo('template_url'); ?>/assets/images/logo-dg.svg" />
             </a>
 
             <nav class="navbar">

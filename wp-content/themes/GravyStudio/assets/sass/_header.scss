@@ -7,8 +7,8 @@ header {
   width: 100%;
   @include transition-all(.5s);
 
-  &.darken {
-    background-color: rgba(0,0,0,.6);
+  &.affix {
+    background-color: rgba(0,0,0,.8);
   }
 
   > .shell {
