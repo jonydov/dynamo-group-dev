@@ -85,6 +85,19 @@ $(document).ready( function () {
 
     /* Sliders */
 
+    $('.gallery-slider').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        autoplaySpeed: 3000,
+        arrows: true,
+        nextArrow: '<i class="slick-next"></i>',
+        prevArrow: '<i class="slick-prev"></i>'
+    });
+
     $('.texts-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -160,6 +173,7 @@ $(document).ready( function () {
             setTimeout(function () {
                 skrllr = skrollr.init({
                     smoothScrolling: true,
+                    forceHeight: false,
                     mobileDeceleration: 0.004
                 });
             }, 100);
