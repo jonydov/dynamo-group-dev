@@ -163,6 +163,123 @@ section {
     }
   }
 
+  &.section-locations-slider {
+    height: 100vh;
+    width: 100%;
+    padding: 0px;
+
+    .locations-slider-nav {
+      position: absolute;
+      width: 100%;
+      z-index: 4;
+      bottom: 0px;
+      left: 0px;
+      direction: ltr;
+      background-color: rgba(34, 32, 32, .5);
+      opacity: 0;
+      @include transition-all(.2s);
+
+      &.slick-initialized {
+        opacity: 1;
+      }
+
+      .item {
+        height: 100px;
+        background-position: center;
+        background-repeat: no-repeat;
+        @include transition(all, .5s, ease);
+        position: relative;
+
+        .img-holder {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          display: block;
+          background-color: #fff;
+          @include transition(all, .2s, ease);
+
+          &:hover {
+            background-color: #000;
+          }
+        }
+
+        &.slick-current {
+          background-color: #fff;
+
+          .img-holder {
+            background-color: #000;
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: #fff;
+        }
+
+        &:focus {
+          outline: none;
+        }
+
+        svg {
+          fill: #fff;
+          @include transition(all, .2s, ease);
+        }
+      }
+    }
+
+    .locations-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      top: 0px;
+      left: 0px;
+      direction: ltr;
+      opacity: 0;
+      @include transition-all(.2s);
+
+      &.slick-initialized {
+        opacity: 1;
+      }
+
+      .item {
+        height: 100vh;
+        width: 100%;
+
+        .bg-holder {
+          display: block;
+          width: 100%;
+          height: 100%;
+          top: 0px;
+          left: 0px;
+          background-size: cover;
+          overflow: hidden;
+
+          &:before {
+            @include pseudoElement;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            background-color: rgba(0, 0, 0, .3);
+          }
+
+          iframe {
+            position: absolute;
+            left: -25%;
+            top: -25%;
+            width: 150%;
+            height: 150%;
+            z-index: 2;
+          }
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
   &.section-slider {
 
     h2 {

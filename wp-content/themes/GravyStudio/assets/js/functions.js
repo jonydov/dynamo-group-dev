@@ -134,6 +134,65 @@ $(document).ready( function () {
         prevArrow: '<i class="zmdi zmdi-chevron-left slick-prev"></i>'
     });
 
+    $('.locations-slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: '.locations-slider-nav'
+    });
+
+    $('.locations-slider-nav').slick({
+        slidesToShow: 4,
+        slidesToScroll: 0,
+        asNavFor: '.locations-slider',
+        arrows: false,
+        centerMode: false,
+        focusOnSelect: true
+    });
+
+    $('.locations-slider').on("beforeChange", function (event, slick) {
+        var currentSlide, slideType, player, command;
+
+        //find the current slide element and decide which player API we need to use.
+        currentSlide = $(slick.$slider).find(".slick-current");
+
+        //get the iframe inside this slide.
+        player = currentSlide.find("iframe").get(0);
+
+        command = {
+            "event": "command",
+            "func": "pauseVideo"
+        };
+
+        //check if the player exists.
+        if (player != undefined) {
+            //post our command to the iframe.
+            player.contentWindow.postMessage(JSON.stringify(command), "*");
+        }
+    });
+
+    $('.locations-slider').on("afterChange", function (event, slick) {
+        var currentSlide, slideType, player, command;
+
+        //find the current slide element and decide which player API we need to use.
+        currentSlide = $(slick.$slider).find(".slick-current");
+
+        //get the iframe inside this slide.
+        player = currentSlide.find("iframe").get(0);
+
+        command = {
+            "event": "command",
+            "func": "playVideo"
+        };
+
+        //check if the player exists.
+        if (player != undefined) {
+            //post our command to the iframe.
+            player.contentWindow.postMessage(JSON.stringify(command), "*");
+        }
+    });
+
     /* Nav Menu */
 
     $('.c-hamburger').click(function(evn){
@@ -164,8 +223,8 @@ $(document).ready( function () {
     }
 
     /**
-        Skrollr
-    */
+     Skrollr
+     */
 
     if ($('.skrollable').length) {
         var skrllr;

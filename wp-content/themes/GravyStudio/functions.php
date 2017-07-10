@@ -93,14 +93,16 @@ function acf_img( $name, $is_sub = false, $classes = "", $size = "" ) {
     }
 }
 
-// allow SVG uploads
-function add_svg_to_upload_mimes( $upload_mimes ) {
-    $upload_mimes['ogv'] = 'image/svg+xml';
-    $upload_mimes['svg'] = 'application/json';
-    $upload_mimes['svgz'] = 'image/svg+xml';
-    return $upload_mimes;
+//add SVG to allowed file uploads
+function add_file_types_to_uploads($file_types){
+
+	$new_filetypes = array();
+	$new_filetypes['svg'] = 'image/svg+xml';
+	$file_types = array_merge($file_types, $new_filetypes );
+
+	return $file_types;
 }
-add_filter( 'upload_mimes', 'add_svg_to_upload_mimes', 10, 1 );
+add_action('upload_mimes', 'add_file_types_to_uploads');
 
 function gs_login_logo(){ ?>
     <style type="text/css">
