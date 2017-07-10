@@ -167,6 +167,7 @@ section {
     height: 100vh;
     width: 100%;
     padding: 0px;
+    overflow-y: hidden;
 
     .locations-slider-nav {
       position: absolute;
@@ -177,10 +178,19 @@ section {
       direction: ltr;
       background-color: rgba(34, 32, 32, .5);
       opacity: 0;
-      @include transition-all(.2s);
+      @include transition-all(1s);
+      @include transform-translateY(100px);
+      will-change: transform;
 
       &.slick-initialized {
         opacity: 1;
+        @include transform-translateY(0px);
+
+        .item {
+          will-change: transform;
+          @include transition-all(1s);
+          @include transform-translateY(0px);
+        }
       }
 
       .item {
@@ -189,6 +199,7 @@ section {
         background-repeat: no-repeat;
         @include transition(all, .5s, ease);
         position: relative;
+        @include transform-translateY(100px);
 
         .img-holder {
           position: absolute;
@@ -275,6 +286,59 @@ section {
 
         &:focus {
           outline: none;
+        }
+
+        .holder {
+          position: absolute;
+          z-index: 5;
+          bottom: 20%;
+          right: 10%;
+          color: #fff;
+          direction: rtl;
+
+          h2 {
+            font-size: 4rem;
+            max-width: 550px;
+            margin: 0 0 15px 0;
+          }
+
+          .text {
+            display: block;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+          }
+
+          a {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, .75);
+            color: #000;
+            padding: 10px 20px;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            @include transition(all, .3s, ease);
+
+            &:hover {
+              background-color: rgba(255, 255, 255, 1);
+            }
+          }
+        }
+
+        &.slick-current {
+
+          .fade-top {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          .fade-bottom {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          .fade-right {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
       }
     }

@@ -134,12 +134,17 @@ $(document).ready( function () {
         prevArrow: '<i class="zmdi zmdi-chevron-left slick-prev"></i>'
     });
 
+    $('.locations-slider').on('init', function(event, slick){
+
+
+    });
+
     $('.locations-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
         fade: true,
-        asNavFor: '.locations-slider-nav'
+        asNavFor: '.locations-slider-nav',
     });
 
     $('.locations-slider-nav').slick({
@@ -149,6 +154,14 @@ $(document).ready( function () {
         arrows: false,
         centerMode: false,
         focusOnSelect: true
+    });
+
+    $('.locations-slider-nav').on('mouseenter', '.slick-slide', function (e) {
+        var $currTarget = $(e.currentTarget),
+            index = $currTarget.data('slick-index'),
+            slickObj = $('.locations-slider').slick('getSlick');
+
+        slickObj.slickGoTo(index);
     });
 
     $('.locations-slider').on("beforeChange", function (event, slick) {
