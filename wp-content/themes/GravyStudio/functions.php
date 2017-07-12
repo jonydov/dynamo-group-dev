@@ -110,7 +110,7 @@ function gs_login_logo(){ ?>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
         body {
-            background: #405566 !important;
+            background: #fff !important;
         }
 
         .login #login_error, .login .message {
@@ -128,7 +128,8 @@ function gs_login_logo(){ ?>
         }
 
         .login form {
-            background-color: #232f38 !important;
+            background-color: #4e7457 !important;
+            direction: rtl;
         }
 
         .login label {
@@ -136,10 +137,10 @@ function gs_login_logo(){ ?>
         }
 
         #login h1 a, .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png);
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo-dg-black.svg);
             padding-bottom: 30px;
             width: 100%;
-            height: 10px;
+            height: 50px;
         }
 
         #login {
@@ -147,16 +148,22 @@ function gs_login_logo(){ ?>
         }
 
         .login .message {
-            background-color: #d2002d !important;
+            background-color: #fff !important;
         }
 
         .wp-core-ui .button-primary {
-            background: #000 !important;
+            background: #fff !important;
             box-shadow: none !important;
             text-shadow: none !important;
             border: none !important;
+            color: #000;
             border-radius: 0px !important;
         }
+
+        .wp-core-ui .button.button-large {
+            color: #000;
+        }
+        
     </style>
 <?php }
 

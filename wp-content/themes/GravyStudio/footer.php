@@ -77,6 +77,12 @@
                                 <a class="ico ico-yt" href="<?=get_field('youtube', 'option'); ?>"></a>
                             </li>
 	                    <?php } ?>
+
+                        <?php if( get_field('instagram', 'option') != null ){ ?>
+                            <li>
+                                <a class="ico ico-inst" href="<?=get_field('instagram', 'option'); ?>"></a>
+                            </li>
+	                    <?php } ?>
                     </ul>
                 </div>
             </div>

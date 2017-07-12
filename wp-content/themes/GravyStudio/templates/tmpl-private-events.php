@@ -35,7 +35,7 @@ get_header();
 							<?php } ?>
 
 							<div class="holder">
-								<h2 class="fade-top" data-delay="100"><?=get_sub_field('title'); ?></h2>
+								<h2 class="fade-top"><?=get_sub_field('title'); ?></h2>
 								<div class="text fade-top"><?=get_sub_field('text'); ?></div>
 								<?php if( get_sub_field('button_text') != null ){ ?>
 									<a class="fade-right" target="<?=get_sub_field('button_target'); ?>" href="<?=get_sub_field('button_link'); ?>"><?=get_sub_field('button_text'); ?></a>

@@ -122,7 +122,7 @@ get_header();
 
 	<?php } elseif ( get_row_layout() == 'form_section' ) { ?>
 
-        <section class="section-form white-section">
+        <section class="section-form white-section" id="contact">
 
             <div class="shell">
 
