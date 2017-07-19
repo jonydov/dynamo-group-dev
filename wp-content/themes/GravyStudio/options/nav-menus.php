@@ -5,6 +5,7 @@ function register_my_menus() {
         'main-menu' => __( 'Main Navigation'),
         'locations-menu' => __( 'Locations Menu'),
         'contact-menu' => __( 'Contact Menu'),
+        'mobile-menu' => __( 'Mobile Navigation'),
         'footer-menu' => __( 'Footer Navigation'),
         'footer-menu-bottom' => __( 'Footer Bottom Navigation'),
     ) );

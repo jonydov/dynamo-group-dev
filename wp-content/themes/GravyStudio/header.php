@@ -20,43 +20,57 @@
 <div class="wrapper">
 
     <header data-offset-top="0" data-spy="scroll" data-target=".white-section">
+
+        <div class="mobile-nav-holder">
+		    <?php
+		    wp_nav_menu(array(
+				    'theme_location' => 'mobile-menu',
+				    'depth' => 1,
+				    'container' => false,
+				    'fallback_cb' => 'wp_page_menu',
+				    'menu_class' => 'mobile-nav cf',
+				    'walker' => new wp_bootstrap_navwalker())
+		    );
+		    ?>
+        </div>
+
         <div class="shell">
             <a class="logo" href="<?php bloginfo('url'); ?>">
-                <img src="<?php bloginfo('template_url'); ?>/assets/images/logo-dg.svg" />
+                <img src="<?php the_field('header_logo', 'option'); ?>" />
             </a>
 
             <nav class="navbar">
                 <div class="tagline">
-                    <span class="phone">0522-889776</span>
+                    <a href="tel:<?php the_field('phone', 'option'); ?>" class="phone"><?php the_field('phone', 'option'); ?></a>
                 </div>
                 <div class="nav-holder">
 	                <?php
-	                wp_nav_menu(array(
-			                'theme_location' => 'main-menu',
-			                'depth' => 1,
-			                'container' => false,
-			                'fallback_cb' => 'wp_page_menu',
-			                'menu_class' => 'main-nav cf',
-			                'walker' => new wp_bootstrap_navwalker())
-	                );
+                        wp_nav_menu(array(
+                            'theme_location' => 'main-menu',
+                            'depth' => 1,
+                            'container' => false,
+                            'fallback_cb' => 'wp_page_menu',
+                            'menu_class' => 'main-nav cf',
+                            'walker' => new wp_bootstrap_navwalker())
+                        );
 
-	                wp_nav_menu(array(
-			                'theme_location' => 'locations-menu',
-			                'depth' => 1,
-			                'container' => false,
-			                'fallback_cb' => 'wp_page_menu',
-			                'menu_class' => 'locations-nav cf',
-			                'walker' => new wp_bootstrap_navwalker())
-	                );
+                        wp_nav_menu(array(
+                            'theme_location' => 'locations-menu',
+                            'depth' => 1,
+                            'container' => false,
+                            'fallback_cb' => 'wp_page_menu',
+                            'menu_class' => 'locations-nav cf',
+                            'walker' => new wp_bootstrap_navwalker())
+                        );
 
-	                wp_nav_menu(array(
-			                'theme_location' => 'contact-menu',
-			                'depth' => 1,
-			                'container' => false,
-			                'fallback_cb' => 'wp_page_menu',
-			                'menu_class' => 'contact-nav cf',
-			                'walker' => new wp_bootstrap_navwalker())
-	                );
+                        wp_nav_menu(array(
+                            'theme_location' => 'contact-menu',
+                            'depth' => 1,
+                            'container' => false,
+                            'fallback_cb' => 'wp_page_menu',
+                            'menu_class' => 'contact-nav cf',
+                            'walker' => new wp_bootstrap_navwalker())
+                        );
 	                ?>
                 </div>
             </nav>

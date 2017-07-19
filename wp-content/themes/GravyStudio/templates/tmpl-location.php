@@ -86,11 +86,7 @@ get_header();
 	<?php } elseif ( get_row_layout() == 'highlighted_text' ) { ?>
 
 		<section class="section-highlighted-text" <?php if( get_sub_field( 'bg_image') != null ){ ?>style="background-image: url('<?=get_sub_field( 'bg_image'); ?> ');"<?php } ?>>
-            <span class="custom-arrow top">
-                <i></i>
-            </span>
-			<span class="custom-arrow bottom">
-            </span>
+
 			<div class="shell">
 				<div class="section-body animate fade-bottom" data-delay="100">
 					<?php the_sub_field('text'); ?>
@@ -131,7 +127,7 @@ get_header();
 
 			<div class="shell">
 
-                <a class="link-home" href="<?php bloginfo('url'); ?>">מעבר לאתר הלורנס</a>
+                <a class="link-home" target="_blank" href="<?php the_sub_field('link'); ?>">מעבר לאתר <?php the_title(); ?></a>
 
                 <div class="section-header">
                     <h2><?=get_sub_field('title'); ?></h2>

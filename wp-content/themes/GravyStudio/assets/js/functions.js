@@ -223,7 +223,8 @@ $(document).ready( function () {
     $('.c-hamburger').click(function(evn){
         evn.preventDefault();
         $(this).toggleClass('is-active');
-        $('.main-nav-buttons').toggleClass('is-active');
+        $('body').toggleClass('is-active');
+        $('.mobile-nav-holder').toggleClass('is-active');
     });
 
     /**
@@ -282,8 +283,10 @@ $(document).ready( function () {
     $('.select .selected').on('click', function () {
         if( $(this).parent().hasClass('open') ){
             $(this).parent().removeClass('open');
+            $(this).closest('.field-holder').removeClass('open');
             $('.date').removeClass('open');
         }else{
+            $(this).closest('.field-holder').addClass('open');
             $('.select').removeClass('open');
             $(this).parent().addClass('open');
             $('.date').removeClass('open');
@@ -303,37 +306,71 @@ $(document).ready( function () {
         if( $(this).parent().hasClass('open') ){
             $(this).parent().removeClass('open');
             $('.date .selected').removeClass('open');
+            $(this).closest('.field-holder').removeClass('open');
         }else{
             $('.select').removeClass('open');
             $(this).parent().addClass('open');
+            $(this).closest('.field-holder').addClass('open');
         }
     });
 
-    $('.date .select-month').on('change', function () {
-
-        var the_month = $(this).parent().find('.select-month').val();
-
-        months = ['ינואר','מרץ','מאי','יולי','ספטמבר','נובמבר',]
-
-        if( $.inArray(the_month, months) !== -1){
-            $(this).parent().parent().find('option[value="31"]').show();
-        }else{
-            $(this).parent().parent().find('option[value="31"]').hide();
-        }
-    });
+    // $('.date .select-month').on('change', function () {
+    //
+    //     var the_month = $(this).parent().find('.select-month').val();
+    //
+    //     months = ['ינואר','מרץ','מאי','יולי','ספטמבר','נובמבר',]
+    //
+    //     if( $.inArray(the_month, months) !== -1){
+    //         $(this).parent().parent().find('option[value="31"]').show();
+    //     }else{
+    //         $(this).parent().parent().find('option[value="31"]').hide();
+    //     }
+    // });
 
     $('.date .btn').on('click', function () {
 
-        var the_day = $(this).parent().find('.select-day').val();
+        //var the_day = $(this).parent().find('.select-day').val();
         var the_month = $(this).parent().find('.select-month').val();
         var the_year = $(this).parent().find('.select-year').val();
 
-        $(this).parent().parent().find('.selected .day').text(the_day);
+        //$(this).parent().parent().find('.selected .day').text(the_day);
         $(this).parent().parent().find('.selected .month').text(the_month);
         $(this).parent().parent().find('.selected .year').text(the_year);
 
         $(this).parent().parent().removeClass('open');
     });
+
+    $(document).mouseup(function(e){
+        var container = $('.values');
+
+        // if the target of the click isn't the container nor a descendant of the container
+        if (!container.is(e.target) && container.has(e.target).length === 0)
+        {
+            container.parent().removeClass('open');
+        }
+    });
+
+    if( $('.section-numbers').length ){
+
+        $.fn.isOnScreen = function(){
+
+            var win = $(window);
+
+            var viewport = {
+                top : win.scrollTop(),
+                left : win.scrollLeft()
+            };
+            viewport.right = viewport.left + win.width();
+            viewport.bottom = viewport.top + win.height();
+
+            var bounds = this.offset();
+            bounds.right = bounds.left + this.outerWidth();
+            bounds.bottom = bounds.top + this.outerHeight();
+
+            return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+
+        };
+    }
 });
 
 $(window).load(function() {
@@ -356,28 +393,13 @@ $(window).load(function() {
     });
 });
 
-$.fn.isOnScreen = function(){
-
-    var win = $(window);
-
-    var viewport = {
-        top : win.scrollTop(),
-        left : win.scrollLeft()
-    };
-    viewport.right = viewport.left + win.width();
-    viewport.bottom = viewport.top + win.height();
-
-    var bounds = this.offset();
-    bounds.right = bounds.left + this.outerWidth();
-    bounds.bottom = bounds.top + this.outerHeight();
-
-    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-
-};
-
 $(window).scroll(function() {
 
-    if( $('.section-numbers').isOnScreen() == true  ){
-        countUp();
+    if( $('.section-numbers').length ){
+
+
+        if( $('.section-numbers').isOnScreen() == true  ){
+            countUp();
+        }
     }
 });

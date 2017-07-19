@@ -42,11 +42,7 @@ get_header();
 	<?php } elseif ( get_row_layout() == 'highlighted_text' ) { ?>
 
         <section class="section-highlighted-text" <?php if( get_sub_field( 'bg_image') != null ){ ?>style="background-image: url('<?=get_sub_field( 'bg_image'); ?> ');"<?php } ?>>
-            <span class="custom-arrow top">
-                <i></i>
-            </span>
-            <span class="custom-arrow bottom">
-            </span>
+
             <div class="shell">
                 <div class="section-body animate fade-bottom" data-delay="100">
                     <?php the_sub_field('text'); ?>
@@ -90,14 +86,14 @@ get_header();
                 <?php if ( have_rows( 'add_items' ) ): ?>
                     <div class="logos-slider">
                         <?php while ( have_rows( 'add_items' ) ) : the_row(); ?>
-                            <div class="item">
+                            <a target="<?php the_sub_field('link_target'); ?>" href="<?php the_sub_field('link_url'); ?>" class="item">
                                 <div class="holder">
                                     <div class="image">
                                         <img src="<?php the_sub_field('logo'); ?>" />
                                     </div>
                                     <span class="border"></span>
                                 </div>
-                            </div>
+                            </a>
                         <?php endwhile; ?>
                     </div>
                 <?php endif; ?>
