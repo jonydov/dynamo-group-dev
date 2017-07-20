@@ -5,6 +5,7 @@ header {
   border-bottom: 1px solid #fff;
   height: 95px;
   width: 100%;
+  background-color: rgba(34, 32, 32, .4);
   @include transition-all(.5s);
 
   &.affix {
@@ -39,10 +40,10 @@ header {
     li {
       position: relative;
       list-style: none;
-      @include transform-translateY(-900px);
+      @include transform-translateX(900px);
       opacity: 0;
       padding: 5px 0;
-      @include transition(all, .4s, ease-out);
+      @include transition(all, .6s, ease-out);
 
       &.img {
         padding-top: 30px;
@@ -61,7 +62,15 @@ header {
         }
       }
 
-      &:nth-child(1) {
+      &:nth-child(7) {
+        -webkit-transition-delay: .49s;
+        -moz-transition-delay: .49s;
+        -ms-transition-delay: .49s;
+        -o-transition-delay: .49s;
+        transition-delay: .49s;
+      }
+
+      &:nth-child(6) {
         -webkit-transition-delay: .42s;
         -moz-transition-delay: .42s;
         -ms-transition-delay: .42s;
@@ -69,7 +78,7 @@ header {
         transition-delay: .42s;
       }
 
-      &:nth-child(2) {
+      &:nth-child(5) {
         -webkit-transition-delay: .35s;
         -moz-transition-delay: .35s;
         -ms-transition-delay: .35s;
@@ -77,7 +86,7 @@ header {
         transition-delay: .35s;
       }
 
-      &:nth-child(3) {
+      &:nth-child(4) {
         -webkit-transition-delay: .28s;
         -moz-transition-delay: .28s;
         -ms-transition-delay: .28s;
@@ -85,7 +94,7 @@ header {
         transition-delay: .28s;
       }
 
-      &:nth-child(4) {
+      &:nth-child(3) {
         -webkit-transition-delay: .21s;
         -moz-transition-delay: .21s;
         -ms-transition-delay: .21s;
@@ -93,7 +102,7 @@ header {
         transition-delay: .21s;
       }
 
-      &:nth-child(5) {
+      &:nth-child(2) {
         -webkit-transition-delay: .14s;
         -moz-transition-delay: .14s;
         -ms-transition-delay: .14s;
@@ -101,20 +110,12 @@ header {
         transition-delay: .14s;
       }
 
-      &:nth-child(6) {
+      &:nth-child(1) {
         -webkit-transition-delay: .7s;
-        -moz-transition-delay: .7s;
-        -ms-transition-delay: .7s;
-        -o-transition-delay: .7s;
-        transition-delay: .7s;
-      }
-
-      &:nth-child(7) {
-        -webkit-transition-delay: .8s;
-        -moz-transition-delay: .8s;
-        -ms-transition-delay: .8s;
-        -o-transition-delay: .8s;
-        transition-delay: .8s;
+        -moz-transition-delay: .2s;
+        -ms-transition-delay: .2s;
+        -o-transition-delay: .2s;
+        transition-delay: .2s;
       }
     }
 
@@ -126,7 +127,7 @@ header {
       transform: translateY(0);
 
       li {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
       }
     }
@@ -314,7 +315,7 @@ $button-transistion-duration: 0.3s; // The transition duration
   display: block;
   position: absolute;
   top: 50%;
-  right: 25px;
+  right: 10px;
   overflow: hidden;
   z-index: 9;
   margin: 0;
@@ -465,5 +466,16 @@ $button-transistion-duration: 0.3s; // The transition duration
     padding-left: 15px;
     padding-right: 15px;
     height: 60px;
+  }
+}
+
+
+@media (max-width: 769px) {
+
+  header {
+
+    .tagline {
+      padding-left: 15px;
+    }
   }
 }

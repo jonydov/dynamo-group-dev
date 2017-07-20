@@ -43,11 +43,11 @@ get_header();
             <div class="form-holder">
 
                 <div class="field-holder animate fade-left" data-delay="100" id="field-location">
-                    <div class="label">אולם</div>
+                    <div class="label">מקום</div>
                     <div class="select">
                         <span class="selected">גלריה לורנס</span>
                         <ul class="values">
-                            <li>גלריה לורנס</li>
+                            <li>הלורנס</li>
                             <li>ריברסייד</li>
                             <li>גלריה דובנוב</li>
                             <li>היי אנד</li>
@@ -58,12 +58,10 @@ get_header();
                 <div class="field-holder animate fade-right" data-delay="100" id="field-event-type">
                     <div class="label">סוג האירוע</div>
                     <div class="select">
-                        <span class="selected">חתונה</span>
+                        <span class="selected">אירוע פרטי</span>
                         <ul class="values">
-                            <li>חתונה</li>
-                            <li>בת מצווה</li>
-                            <li>ערב חברה</li>
-                            <li>אחר</li>
+                            <li>אירוע פרטי</li>
+                            <li>אירוע עסקי</li>
                         </ul>
                     </div>
                 </div>
@@ -138,10 +136,12 @@ get_header();
                     <div class="select">
                         <span class="selected">ארוחת בוקר</span>
                         <ul class="values">
-                            <li>ארוחת בוקר</li>
+                            <li>בוקר קל</li>
                             <li>בראנץ'</li>
-                            <li>ארוחת צהרים</li>
+                            <li>ארוחת צהריים</li>
+                            <li>קוקטייל</li>
                             <li>ארוחת ערב</li>
+                            <li>מסיבה</li>
                         </ul>
                     </div>
                 </div>

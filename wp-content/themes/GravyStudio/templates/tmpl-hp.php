@@ -17,7 +17,10 @@ get_header();
                 <?php if( get_sub_field('type') == 'video' ){ ?>
                     <div class="vid-holder">
 	                    <?php if( get_sub_field('video_youtube') != null ){ ?>
-                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?=get_sub_field('video_youtube'); ?>/?mute=1&loop=1&autoplay=1" frameborder="0" allowfullscreen></iframe>
+		                    <?php if( get_sub_field('mobile_image') != null ){ ?>
+                                <div class="bg-img" style="background-image: url('<?php the_sub_field('mobile_image'); ?>"></div>
+		                    <?php } ?>
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/<?=get_sub_field('video_youtube'); ?>/?mute=1&playlist=<?=get_sub_field('video_youtube'); ?>loop=1&autoplay=1" frameborder="0" allowfullscreen></iframe>
 	                    <?php }else{ ?>
                             <video loop autoplay poster="<?=$img['url']; ?>">
                                 <source src="<?=get_sub_field('video_mp4'); ?>" type="video/mp4">

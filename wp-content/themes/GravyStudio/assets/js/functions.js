@@ -124,7 +124,21 @@ $(document).ready( function () {
         asNavFor: '.texts-slider',
         arrows: false,
         centerMode: false,
-        focusOnSelect: true
+        focusOnSelect: true,
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            // You can unslick at a given breakpoint now by adding:
+            // settings: "unslick"
+            // instead of a settings object
+        ]
     });
 
     $('.slick-slide').on('mouseenter', function (e) {
@@ -140,7 +154,7 @@ $(document).ready( function () {
         pauseOnFocus: false,
         pauseOnHover: false,
         fade: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 5000,
         arrows: false,
         nextArrow: '<i class="zmdi zmdi-chevron-right slick-next"></i>',
         prevArrow: '<i class="zmdi zmdi-chevron-left slick-prev"></i>'
